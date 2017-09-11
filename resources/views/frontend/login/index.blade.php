@@ -22,10 +22,10 @@
         <div class="weui_cell weui_vcode">
             <div class="weui_cell_hd"><label class="weui_label">验证码</label></div>
             <div class="weui_cell_bd weui_cell_primary">
-                <input class="weui_input" type="number" placeholder="请输入验证码"/>
+                <input class="weui_input" type="text" placeholder="请输入验证码"/>
             </div>
             <div class="weui_cell_ft">
-                <img src="/service/validate_code/create" class="bk_validate_code"/>
+                <img src="/validate/captcha/img" class="bk_validate_code"/>
             </div>
         </div>
     </div>
@@ -38,8 +38,8 @@
 
 @section('my-js')
     <script type="text/javascript">
-        $('.bk_validate_code').click(function () {
-            $(this).attr('src', '/service/validate_code/create?random=' + Math.random());
+        $('.bk_validate_code').click(function (e) {
+            $(this).attr('src','/validate/captcha/img?random='+Math.random());
         });
     </script>
 @endsection

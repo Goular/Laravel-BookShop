@@ -16,3 +16,9 @@ Route::get('/','\App\Http\Controllers\IndexController@index');
 
 //登录模块
 Route::get('/login','\App\Http\Controllers\LoginController@index');
+
+//注册模块
+Route::get('/register','\App\Http\Controllers\RegisterController@index');
+
+//验证码模块的使用
+Route::get('/validate/captcha/img','\App\Http\Controllers\Service\ValidateController@create');
