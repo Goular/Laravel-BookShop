@@ -15,6 +15,9 @@ class CreatePdtImagesTable extends Migration
     {
         Schema::create('pdt_images', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('image_path',200);
+            $table->integer('image_no');
+            $table->integer('product_id');
             $table->timestamps();
         });
     }

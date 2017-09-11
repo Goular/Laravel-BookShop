@@ -15,6 +15,8 @@ class CreatePdtContentsTable extends Migration
     {
         Schema::create('pdt_contents', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('content');
+            $table->integer('product_id');
             $table->timestamps();
         });
     }
