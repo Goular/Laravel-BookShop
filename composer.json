@@ -16,6 +16,7 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "lucadegasperi/oauth2-server-laravel": "^5.2",
+        "mews/captcha": "^2.1",
         "overtrue/easy-sms": "^0.0.9",
         "overtrue/laravel-socialite": "^1.1",
         "overtrue/laravel-wechat": "~3.0",

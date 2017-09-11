@@ -197,6 +197,9 @@ return [
         //添加Dingo/API和JWT-Auth的服务提供者
         //Dingo\Api\Provider\LaravelServiceProvider::class,
         //Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
+
+        //验证码mewebstudio/captcha
+        Mews\Captcha\CaptchaServiceProvider::class,
     ],
 
     /*
@@ -258,6 +261,9 @@ return [
         //使用JWT开发接口
         //'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
         //'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory'
+
+        //添加Captcha
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
     ],
 
 ];
