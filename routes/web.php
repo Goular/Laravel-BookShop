@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//前台模块
+Route::get('/','\App\Http\Controllers\IndexController@index');
+
+//登录模块
+Route::get('/login','\App\Http\Controllers\LoginController@index');
