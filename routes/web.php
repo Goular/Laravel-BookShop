@@ -25,3 +25,5 @@ Route::get('/validate/captcha/img','\App\Http\Controllers\Service\ValidateContro
 
 //验证短信发送模块的使用
 Route::get('/validate/sms/code/{id}','\App\Http\Controllers\SmsController@sendSms');
+
+Route::any('service/validate_phone/send', 'Service\ValidateController@sendSMS');
