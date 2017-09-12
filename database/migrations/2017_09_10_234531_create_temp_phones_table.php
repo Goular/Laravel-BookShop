@@ -15,6 +15,9 @@ class CreateTempPhonesTable extends Migration
     {
         Schema::create('temp_phones', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('phone',20);
+            $table->integer('code');
+            $table->timestamp('deadline')->nullable();
             $table->timestamps();
         });
     }

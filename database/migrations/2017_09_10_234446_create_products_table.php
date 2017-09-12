@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('summary',200);
             $table->decimal('price',10,2);
             $table->string('preview',200);
-            $table->integer('catagory_id');
+            $table->integer('catagory_id')->nullable();
             $table->timestamps();
         });
     }

@@ -15,6 +15,9 @@ class CreateTempEmailsTable extends Migration
     {
         Schema::create('temp_emails', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('member_id');
+            $table->string('code',60);
+            $table->timestamp('deadline')->nullable();
             $table->timestamps();
         });
     }
