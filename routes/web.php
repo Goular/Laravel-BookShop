@@ -22,3 +22,6 @@ Route::get('/register','\App\Http\Controllers\RegisterController@index');
 
 //验证码模块的使用
 Route::get('/validate/captcha/img','\App\Http\Controllers\Service\ValidateController@create');
+
+//验证短信发送模块的使用
+Route::get('/validate/sms/code/{id}','\App\Http\Controllers\SmsController@sendSms');
