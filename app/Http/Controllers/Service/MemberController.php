@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Service;
 
+use App\Models\M3Email;
 use App\Models\M3Result;
 use App\Models\Member;
+use App\Models\TempEmail;
 use App\Models\TempPhone;
+use App\Tool\UUID;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -80,12 +83,12 @@ class MemberController extends Controller
                 return json_encode($m3_result);
             }
 
-            $validate_code_session = $request->session()->get('validate_code', '');
-            if($validate_code_session != $validate_code) {
-                $m3_result->status = 8;
-                $m3_result->message = '验证码不正确';
-                return json_encode($m3_result);
-            }
+//            $validate_code_session = $request->session()->get('validate_code', '');
+//            if($validate_code_session != $validate_code) {
+//                $m3_result->status = 8;
+//                $m3_result->message = '验证码不正确';
+//                return json_encode($m3_result);
+//            }
 
             $member = new Member;
             $member->email = $email;
@@ -94,21 +97,21 @@ class MemberController extends Controller
 
             $uuid = UUID::create();
 
-            $m3_email = new M3Email;
+            $m3_email = new M3Email();
             $m3_email->to = $email;
             $m3_email->cc = 'magina@speakez.cn';
-            $m3_email->subject = '凯恩书店验证';
-            $m3_email->content = '请于24小时点击该链接完成验证. http://book.magina.com/service/validate_email'
+            $m3_email->subject = '加工屋书店验证';
+            $m3_email->content = "请于24小时点击该链接完成验证. http://book.magina.com/service/validate_email"
                 . '?member_id=' . $member->id
                 . '&code=' . $uuid;
 
-            $tempEmail = new TempEmail;
+            $tempEmail = new TempEmail();
             $tempEmail->member_id = $member->id;
             $tempEmail->code = $uuid;
             $tempEmail->deadline = date('Y-m-d H-i-s', time() + 24*60*60);
             $tempEmail->save();
 
-            Mail::send('email_register', ['m3_email' => $m3_email], function ($m) use ($m3_email) {
+            \Mail::send('email_register', ['m3_email' => $m3_email], function ($m) use ($m3_email) {
                 // $m->from('hello@app.com', 'Your Application');
                 $m->to($m3_email->to, '尊敬的用户')
                     ->cc($m3_email->cc)
